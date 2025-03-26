@@ -1,0 +1,62 @@
+.sprint_container {
+    padding: 20px;
+}
+
+.task_sections {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.task_column {
+    width: 30%;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task_card {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task_actions {
+    display: flex;
+    gap: 5px;
+}
+
+.view_btn, .edit_btn, .delete_btn {
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.view_btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.edit_btn {
+    background-color: #ffc107;
+    color: white;
+}
+
+.delete_btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.error{
+    color: #dc3545;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: .8rem;
+}
