@@ -1,16 +1,16 @@
 import { create } from "zustand";
-import { Tarea } from "../types/types";
+import { ITarea } from "../types/types";
 
-interface BacklogStore{
-    backlog: Tarea[],
-    tareaActiva: Tarea | null,
-    setTarea: (tareas: Tarea[]) => void;
-    setTareaActiva: (tarea: Tarea | null) => void;
+interface IBacklogStore{
+    tareas: ITarea[],
+    tareaActiva: ITarea | null,
+    setTarea: (tareas: ITarea[]) => void;
+    setTareaActiva: (tarea: ITarea | null) => void;
 }
 
-export const backlogStore = create<BacklogStore>((set) => ({
-    backlog: [],
+export const backlogStore = create<IBacklogStore>((set) => ({
+    tareas: [],
     tareaActiva: null,
-    setTarea: (tareas: Tarea[]) => set(()=> ({ backlog: tareas })),
-    setTareaActiva: (tarea: Tarea | null) => set(()=> ({ tareaActiva: tarea }))
+    setTarea: (tareas_: ITarea[]) => set(()=> ({ tareas: tareas_ })),
+    setTareaActiva: (tarea: ITarea | null) => set(()=> ({ tareaActiva: tarea }))
 }));

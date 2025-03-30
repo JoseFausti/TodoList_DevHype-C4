@@ -5,6 +5,14 @@ import { useShallow } from "zustand/shallow";
 import { backlogStore } from "../../store/backlogStore";
 import { sprintStore } from "../../store/sprintStore";
 
+// Backlog Controllers
+import {
+    getBacklogController,
+    createTaskBacklogController,
+    updateBacklogController,
+    deleteTaskBacklogController
+} from '../../data/backlogController';
+
 const BacklogScreen = () => {
 
     // Estado del Backlog

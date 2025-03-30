@@ -4,6 +4,14 @@ import { FaEye, FaEdit, FaTrash } from "react-icons/fa";
 import { sprintStore } from '../../store/sprintStore';
 import { useShallow } from 'zustand/shallow';
 
+// SprintList Controllers
+import { 
+    getSprintListController,
+    createSprintController,
+    updateSprintController,
+    deleteSprintController
+ } from '../../data/sprintListController'; 
+
 const SprintScreen = () => {
     // Parametro del id extraido de react-router-dom
     const { id } = useParams();

@@ -1,4 +1,4 @@
-export interface Tarea {
+export interface ITarea {
     id: string;
     titulo: string;
     descripcion: string;
@@ -6,10 +6,18 @@ export interface Tarea {
     fechaLimite: string;
 }
 
-export interface Sprint {
+export interface IBacklog{
+    tareas: ITarea[]
+}
+
+export interface ISprint {
     id: string;
     nombre: string;
     fechaInicio: string;
     fechaCierre: string;
-    tareas: Tarea[];
+    tareas: ITarea[];
+}
+
+export interface ISprintList {
+    sprints: ISprint[]
 }
