@@ -1,62 +1,179 @@
-.sprint_container {
-    padding: 20px;
+.backlog_container{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Evita scroll innecesario */
+}
+
+/* Aside */
+.aside_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    background-color: #E9E9E9;
+    
+}
+
+.backlog_btn{
+    margin: .8rem 0;
+    padding: .8rem 6rem;
+    background-color: #000AC0;
+    width: 100%;
+}
+
+.sprint_list{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 90%;
+    height: 90%;
+    text-align: center;
+    background-color: #f4f4f4;
+    border-radius: .4rem;
+    border: 2px solid #DDDDDD;
+}
+
+.sprint_list_header{
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: .8rem 0;
+    width: 80%;
+    border-bottom: 2px solid black;
+}
+
+.sprint_list_header h2{
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+.sprint_list_header button{
+    margin: .2rem;
+    background-color: #000dff;
+}
+
+.sprint_card{
+    display: flex;
+    flex-direction: column;
+    gap: .4rem 0;
+    color: #ffffff;
+    background: linear-gradient(45deg, #000AC0 0%, #000000 95%, #FFFFFF 10%);
+    box-shadow: 4px 4px 12px #000000;
+    border-radius: .25rem;
+    width: 84%;
+    margin: .6rem auto;
+    padding: .6rem 0;
+}
+
+.sprint_card:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.sprint_card:not(:hover) {
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.sprint_actions{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Sprint Main */
+.sprint_container{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    border-left: 2px solid #DDDDDD;
+}
+
+.task_header{
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .4rem 0;
+}
+
+.task_header_actions{
+    margin-top: .4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.task_header_actions h3{
+    color: #000000;
+}
+
+.task_header_actions button{
+    align-self: center;
+    background-color: #000dff;
 }
 
 .task_sections {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    justify-content: space-around;    
 }
 
-.task_column {
-    width: 30%;
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.task_card {
-    background-color: white;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
+.task_column_pending, .task_column_in_progress, .task_column_completed{
+    margin: 0 auto;
+    width: 96%;
+    height: 90%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: 1rem;
 }
 
-.task_actions {
+.task_column_pending h3, .task_column_in_progress h3, .task_column_completed h3{
+    margin-top: .8rem;
+    color: #000000;
+}
+
+.task_column_pending{
+    background-color: #0099e030;
+}
+
+.task_column_in_progress{
+    background-color: #e0e00030;
+}
+
+.task_column_completed{
+    background-color: #00e02530;
+}
+
+.task_card{
+    width: 90%;
     display: flex;
-    gap: 5px;
+    flex-direction: column;
+    gap: .8rem 0;
+    color: #ffffff;
+    box-shadow: 4px 4px 12px #000000;
+    border-radius: .25rem;
+    margin: .6rem auto;
+    padding: 1.8rem 0;
 }
 
-.view_btn, .edit_btn, .delete_btn {
-    border: none;
-    padding: 5px;
-    border-radius: 4px;
-    cursor: pointer;
+/* Buttons */
+.btn_view{
+    background-color: #ff00d9;
 }
 
-.view_btn {
-    background-color: #007bff;
-    color: white;
+.btn_edit{
+    background-color: #000AC0;
 }
 
-.edit_btn {
-    background-color: #ffc107;
-    color: white;
-}
-
-.delete_btn {
-    background-color: #dc3545;
-    color: white;
-}
-
-.error{
-    color: #dc3545;
-    text-transform: capitalize;
-    text-align: center;
-    font-size: .8rem;
+.btn_delete{
+    background-color: #C00000;
 }
