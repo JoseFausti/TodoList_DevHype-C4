@@ -1,6 +1,6 @@
 import styles from './BacklogScreen.module.css'
 import { FaEye, FaEdit, FaTrash, FaPlus, FaArrowRight } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
 import { backlogStore } from "../../store/backlogStore";
 import { sprintStore } from "../../store/sprintStore";
@@ -9,8 +9,6 @@ import { getSprintListController } from '../../data/sprintListController';
 import { getBacklogController } from '../../data/backlogController';
 
 const BacklogScreen = () => {
-
-    const navigate = useNavigate();
 
     // Estado del Backlog
     const {

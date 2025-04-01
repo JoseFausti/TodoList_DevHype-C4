@@ -84,6 +84,10 @@
     justify-content: space-around;
 }
 
+.sprint_actions button{
+    border:  1px solid white
+}
+
 /* Main */
 .backlog_main{
     flex: 1;
@@ -161,8 +165,12 @@
 }
 
 /* Buttons */
+.task_actions_btn button{
+    border: 1px solid white;
+}
+
 .btn_view{
-    background-color: #ff00d9;
+    background-color: #000000;
 }
 
 .btn_edit{

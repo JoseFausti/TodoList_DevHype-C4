@@ -66,12 +66,24 @@ const SprintScreen = () => {
                         <div className={styles.task_column_pending}>
                             <h3><b>Pendiente</b></h3>
                             {sprint.tareas.filter(t => t.estado === "pendiente").map((tarea) => (
-                                <div key={tarea.id} className={styles.task_card}>
-                                    <p>{tarea.titulo}: {tarea.descripcion}</p>
+                                <div key={tarea.id} className={styles.task_card_pending}>
+                                    <div className={styles.task_card_legend}>
+                                        <h4><b>Titulo:</b> {tarea.titulo}</h4>
+                                        <h4><b>Descripcion:</b> {tarea.descripcion}</h4>
+                                        <h4><b>Fecha Limite:</b> {tarea.fechaLimite}</h4>
+                                    </div>
                                     <div className={styles.task_actions}>
-                                        <button className={styles.view_btn}><FaEye /></button>
-                                        <button className={styles.edit_btn}><FaEdit /></button>
-                                        <button className={styles.delete_btn}><FaTrash /></button>
+                                        <div className={styles.task_actions_backlog}>
+                                            <button onClick={()=>{}}>Enviar al Backlog</button>
+                                        </div>
+                                        <div className={styles.switch_state}>
+                                            <button onClick={()=>{}}>Pendiente</button>
+                                        </div>
+                                        <div className={styles.task_actions_btn}>
+                                            <button className={styles.btn_view}><FaEye /></button>
+                                            <button className={styles.btn_edit}><FaEdit /></button>
+                                            <button className={styles.btn_delete}><FaTrash /></button>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
@@ -80,12 +92,24 @@ const SprintScreen = () => {
                         <div className={styles.task_column_in_progress}>
                             <h3><b>En Progreso</b></h3>
                             {sprint.tareas.filter(t => t.estado === "en progreso").map((tarea) => (
-                                <div key={tarea.id} className={styles.task_card}>
-                                    <p>{tarea.titulo}: {tarea.descripcion}</p>
+                                <div key={tarea.id} className={styles.task_card_in_progress}>
+                                    <div className={styles.task_card_legend}>
+                                        <h4><b>Titulo:</b> {tarea.titulo}</h4>
+                                        <h4><b>Descripcion:</b> {tarea.descripcion}</h4>
+                                        <h4><b>Fecha Limite:</b> {tarea.fechaLimite}</h4>
+                                    </div>
                                     <div className={styles.task_actions}>
-                                        <button className={styles.view_btn}><FaEye /></button>
-                                        <button className={styles.edit_btn}><FaEdit /></button>
-                                        <button className={styles.delete_btn}><FaTrash /></button>
+                                        <div className={styles.task_actions_backlog}>
+                                            <button onClick={()=>{}}>Enviar al Backlog</button>
+                                        </div>
+                                        <div className={styles.switch_state}>
+                                            <button onClick={()=>{}}>En progreso</button>
+                                        </div>
+                                        <div className={styles.task_actions_btn}>
+                                            <button className={styles.btn_view}><FaEye /></button>
+                                            <button className={styles.btn_edit}><FaEdit /></button>
+                                            <button className={styles.btn_delete}><FaTrash /></button>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
@@ -94,12 +118,24 @@ const SprintScreen = () => {
                         <div className={styles.task_column_completed}>
                             <h3><b>Completado</b></h3>
                             {sprint.tareas.filter(t => t.estado === "completado").map((tarea) => (
-                                <div key={tarea.id} className={styles.task_card}>
-                                    <p>{tarea.titulo}: {tarea.descripcion}</p>
+                                <div key={tarea.id} className={styles.task_card_completed}>
+                                    <div className={styles.task_card_legend}>
+                                        <h4><b>Titulo:</b> {tarea.titulo}</h4>
+                                        <h4><b>Descripcion:</b> {tarea.descripcion}</h4>
+                                        <h4><b>Fecha Limite:</b> {tarea.fechaLimite}</h4>
+                                    </div>
                                     <div className={styles.task_actions}>
-                                        <button className={styles.view_btn}><FaEye /></button>
-                                        <button className={styles.edit_btn}><FaEdit /></button>
-                                        <button className={styles.delete_btn}><FaTrash /></button>
+                                        <div className={styles.task_actions_backlog}>
+                                            <button onClick={()=>{}}>Enviar al Backlog</button>
+                                        </div>
+                                        <div className={styles.switch_state}>
+                                            <button onClick={()=>{}}>Completado</button>
+                                        </div>
+                                        <div className={styles.task_actions_btn}>
+                                            <button className={styles.btn_view}><FaEye /></button>
+                                            <button className={styles.btn_edit}><FaEdit /></button>
+                                            <button className={styles.btn_delete}><FaTrash /></button>
+                                        </div>
                                     </div>
                                 </div>
                             ))}

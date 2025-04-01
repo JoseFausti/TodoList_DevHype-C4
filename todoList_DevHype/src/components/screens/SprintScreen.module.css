@@ -7,6 +7,7 @@
 
 /* Aside */
 .aside_container{
+    min-width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,6 +24,7 @@
 }
 
 .sprint_list{
+    min-width: 250px;
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -84,6 +86,10 @@
     justify-content: space-around;
 }
 
+.sprint_actions button{
+    border:  1px solid white
+}
+
 /* Sprint Main */
 .sprint_container{
     flex: 1;
@@ -127,6 +133,7 @@
 }
 
 .task_column_pending, .task_column_in_progress, .task_column_completed{
+    min-width: 350px;
     margin: 0 auto;
     width: 96%;
     height: 90%;
@@ -153,21 +160,81 @@
     background-color: #00e02530;
 }
 
-.task_card{
+.task_card_pending, .task_card_in_progress, .task_card_completed{
+    min-width: 300px;
     width: 90%;
     display: flex;
     flex-direction: column;
-    gap: .8rem 0;
-    color: #ffffff;
-    box-shadow: 4px 4px 12px #000000;
+    border: 1px solid black;
+    box-shadow: 1px 1px 2px black;
     border-radius: .25rem;
-    margin: .6rem auto;
-    padding: 1.8rem 0;
+    padding: .4rem;
+    gap: .8rem;
+}
+
+.task_card_pending{
+    background-color: #000ac050;
+}
+
+.task_card_in_progress{
+    background-color: #e0e00050;
+}
+
+.task_card_completed{
+    background-color: #00e02550;
+}
+
+.task_card_legend{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.task_card_legend h4{
+    color: #000000;
+    font-weight: 300;
+}
+
+.task_card_legend b{
+    font-style: italic;
+    /* text-decoration: underline; */
+    font-weight: 700;
+}
+
+.task_actions{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .2rem;
+}
+
+.task_actions div{
+    padding: .2rem;
+    font-size: .8rem;
+}
+
+.task_actions_btn{
+    display: flex;
+    gap: .2rem;
+}
+
+.task_actions_btn button{
+    padding: .4rem .6rem;
 }
 
 /* Buttons */
+.task_actions_backlog button{
+    background-color: #00b403;
+}
+
+.switch_state button{
+    background-color: rgb(199, 123, 0);
+}
+
 .btn_view{
-    background-color: #ff00d9;
+    background-color: #000000;
 }
 
 .btn_edit{
