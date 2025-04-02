@@ -4,11 +4,19 @@ import { Link } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
 import { backlogStore } from "../../store/backlogStore";
 import { sprintStore } from "../../store/sprintStore";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getSprintListController } from '../../data/sprintListController';
-import { getBacklogController } from '../../data/backlogController';
+import { createTaskBacklogController, getBacklogController } from '../../data/backlogController';
+import { ITarea } from '../../types/types';
+import CreateTask from './tasks/CreateTask';
 
 const BacklogScreen = () => {
+
+    const [taskModal, setTaskModal] = useState<Record<string, boolean>>({
+        createTaskModal: false,
+        viewTaskModal: false,
+        editTaskModal: false,
+    })
 
     // Estado del Backlog
     const {
@@ -56,6 +64,16 @@ const BacklogScreen = () => {
         })();        
     },[])
 
+    // Funcion crear tarea
+    const createTask = async(newTask: ITarea)=>{
+        try {
+            await createTaskBacklogController(newTask);
+            setTarea([...backlog, newTask])
+        } catch (error) {
+            console.log('Error al crear la tarea en BacklogScreen', error);
+        }
+    }
+
     return (
         <div className={styles.backlog_container}>
             <div className={styles.aside_container}>
@@ -73,8 +91,8 @@ const BacklogScreen = () => {
                             <p><b>Inicio:</b> {sprint.fechaInicio}</p>
                             <div className={styles.sprint_actions}>
                                 <Link to={`/sprint/${sprint.id}`} onClick={()=>{setSprintActivo(sprint)}}><button className={styles.btn_view}><FaEye /></button></Link>
-                                <button className={styles.btn_edit}><FaEdit /></button>
-                                <button className={styles.btn_delete}><FaTrash /></button>
+                                <button className={styles.btn_edit} onClick={()=>{setSprintActivo(sprint)}}><FaEdit /></button>
+                                <button className={styles.btn_delete} onClick={()=>{setSprintActivo(sprint)}}><FaTrash /></button>
                             </div>
                         </div>
                     ))}
@@ -88,7 +106,8 @@ const BacklogScreen = () => {
                         <h1>Backlog</h1>
                         <div>
                             <h2>Tareas en el backlog</h2>
-                            <button className={styles.btn_add_task}><FaPlus /> Crear tarea</button>
+                            <button className={styles.btn_add_task} onClick={()=>{setTaskModal({...taskModal, createTaskModal: true})}}><FaPlus /> Crear tarea</button>
+                            {taskModal.createTaskModal && <CreateTask createTask={createTask} setModal={setTaskModal}/>}
                         </div>
                     </div>
                     <div className={styles.task_list}>
