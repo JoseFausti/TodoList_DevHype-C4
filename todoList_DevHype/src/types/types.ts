@@ -1,3 +1,6 @@
+import { EffectCallback } from "react";
+
+// Interfaces
 export interface ITarea {
     id: string;
     titulo: string;
@@ -20,4 +23,9 @@ export interface ISprint {
 
 export interface ISprintList {
     sprints: ISprint[]
+}
+
+export interface CreateTaskProps {
+    createTask: (newTask: ITarea) => Promise<void>;
+    setModal: (modalState: Record<string, boolean>) => void; // Record: Mejor opcion para tipar un objeto
 }

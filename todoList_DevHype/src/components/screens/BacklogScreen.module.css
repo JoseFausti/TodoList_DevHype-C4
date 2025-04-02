@@ -1,4 +1,5 @@
 .backlog_container{
+    position: relative;
     display: flex;
     width: 100vw;
     height: 100vh;
@@ -84,6 +85,10 @@
     justify-content: space-around;
 }
 
+.sprint_actions button{
+    border:  1px solid white
+}
+
 /* Main */
 .backlog_main{
     flex: 1;
@@ -118,40 +123,50 @@
     margin-bottom: .4rem;
 }
 
-.backlog_main_header div button{
-    background-color: #000dff;
-}
-
 .task_list{
     min-width: 100%;
     color: #ffffff;
-    background: linear-gradient(45deg, #000AC0 0%, #000000 98.5%, #FFFFFF 10%);
-    box-shadow: 4px 4px 12px #000000;
-    border-radius: .25rem;
     margin: .6rem auto;
     padding: .6rem 0;
 }
 
-.task_list:hover{
-    transform: scale(1.015);
-    transition: transform 0.3s ease-in-out;
-}
-.task_list:not(:hover){
-    transform: scale(1);
-    transition: transform 0.3s ease-in-out;
-}
-
 .task_card{
     width: 100%;
+    margin: .8rem auto;
+    padding: .4rem 0;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    background: linear-gradient(45deg, #000AC0 0%, #000000 98.5%, #FFFFFF 10%);
+    box-shadow: 4px 4px 12px #000000;
+    border-radius: .25rem;
+}
+
+.task_card:hover{
+    transform: scale(1.015);
+    transition: transform 0.3s ease-in-out;
+}
+.task_card:not(:hover){
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
 }
 
 .task_actions{
     width: 60%;
     display: flex;
     justify-content: space-around;
+}
+
+.task_actions button, .task_actions select{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid white;
+}
+
+.task_actions select{
+    padding: 0 .4rem;
+    border-radius: .2rem;
 }
 
 .task_actions_btn{
@@ -161,8 +176,16 @@
 }
 
 /* Buttons */
+.btn_add_task{
+    background-color: #000dff;
+}
+
+.task_actions_btn button{
+    border: 1px solid white;
+}
+
 .btn_view{
-    background-color: #ff00d9;
+    background-color: #000000;
 }
 
 .btn_edit{
