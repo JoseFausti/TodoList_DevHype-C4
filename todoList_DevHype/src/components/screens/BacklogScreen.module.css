@@ -1,108 +1,197 @@
-/* Estilos generales para el contenedor del backlog */
-.backlog_container {
+.backlog_container{
+    position: relative;
     display: flex;
+    width: 100vw;
     height: 100vh;
-    background-color: #f8f9fa;
+    overflow: hidden; /* Evita scroll innecesario */
 }
 
-/* Estilos para la barra lateral de sprints */
-.sprint_list {
-    width: 300px;
-    padding: 20px;
-    background: #ffffff;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.sprint_card {
-    background: #f1f1f1;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-.sprint_card h3 {
-    margin: 0;
-    font-size: 16px;
-}
-
-.sprint_actions {
+/* Aside */
+.aside_container{
     display: flex;
-    gap: 5px;
-    margin-top: 10px;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    background-color: #E9E9E9;
+    
 }
 
-.btn_view, .btn_edit, .btn_delete {
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-size: 16px;
+.backlog_btn{
+    margin: .8rem 0;
+    padding: .8rem 6rem;
+    background-color: #000AC0;
+    width: 100%;
 }
 
-.btn_view { color: blue; }
-.btn_edit { color: orange; }
-.btn_delete { color: red; }
+.sprint_list{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 90%;
+    height: 90%;
+    text-align: center;
+    background-color: #f4f4f4;
+    border-radius: .4rem;
+    border: 2px solid #DDDDDD;
+}
 
-/* Estilos para la sección principal del backlog */
-.backlog_main {
+.sprint_list_header{
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: .8rem 0;
+    width: 80%;
+    border-bottom: 2px solid black;
+}
+
+.sprint_list_header h2{ 
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+.sprint_list_header button{
+    margin: .2rem;
+    background-color: #000dff;
+}
+
+.sprint_card{
+    display: flex;
+    flex-direction: column;
+    gap: .4rem 0;
+    color: #ffffff;
+    background: linear-gradient(45deg, #000AC0 0%, #000000 95%, #FFFFFF 10%);
+    box-shadow: 4px 4px 12px #000000;
+    border-radius: .25rem;
+    width: 84%;
+    margin: .6rem auto;
+    padding: .6rem 0;
+}
+
+.sprint_card:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.sprint_card:not(:hover) {
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.sprint_actions{
+    display: flex;
+    justify-content: space-around;
+}
+
+.sprint_actions button{
+    border:  1px solid white
+}
+
+/* Main */
+.backlog_main{
     flex: 1;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    border-left: 2px solid #DDDDDD;
+    align-items: center;
+    justify-content: center;
 }
 
-.btn_add_task {
-    background: #5a67d8;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
+.backlog_main_container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 96%;
+    margin: 0 auto; /* justify-self no lo puedo usar porque es para los grid, no para los flex */
+}
+
+.backlog_main_header{
+    margin: 1rem 0;
+}
+
+.backlog_main_header div{
+    display: flex;
+    gap: 1rem;
+}
+
+.backlog_main_header h1, .backlog_main_header div > h2{
+    color: #000000;
+    font-weight: 600;
+    margin-bottom: .4rem;
+}
+
+.task_list{
+    min-width: 100%;
+    color: #ffffff;
+    margin: .6rem auto;
+    padding: .6rem 0;
+}
+
+.task_card{
+    width: 100%;
+    margin: .8rem auto;
+    padding: .4rem 0;
     display: flex;
     align-items: center;
-    gap: 5px;
+    justify-content: space-around;
+    background: linear-gradient(45deg, #000AC0 0%, #000000 98.5%, #FFFFFF 10%);
+    box-shadow: 4px 4px 12px #000000;
+    border-radius: .25rem;
 }
 
-.btn_add_task:hover {
-    background: #434190;
+.task_card:hover{
+    transform: scale(1.015);
+    transition: transform 0.3s ease-in-out;
+}
+.task_card:not(:hover){
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
 }
 
-.task_list {
-    margin-top: 20px;
-}
-
-.task_card {
-    background: #ffffff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+.task_actions{
+    width: 60%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+    justify-content: space-around;
 }
 
-.task_actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.btn_move {
-    background: #343a40;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+.task_actions button, .task_actions select{
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 1rem;
+    border: 1px solid white;
 }
 
-.btn_move:hover {
-    background: #212529;
+.task_actions select{
+    padding: 0 .4rem;
+    border-radius: .2rem;
 }
 
-.sprint_select {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+.task_actions_btn{
+    display: flex;
+    justify-content: space-around;
+    gap: 0.4rem;
+}
+
+/* Buttons */
+.btn_add_task{
+    background-color: #000dff;
+}
+
+.task_actions_btn button{
+    border: 1px solid white;
+}
+
+.btn_view{
+    background-color: #000000;
+}
+
+.btn_edit{
+    background-color: #000AC0;
+}
+
+.btn_delete{
+    background-color: #C00000;
 }
