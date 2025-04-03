@@ -1,4 +1,4 @@
-import { createTaskBacklogController } from "../data/backlogController";
+import { createTaskBacklogController, updateBacklogController } from "../data/backlogController";
 import { ITarea } from "../types/types";
 import useStore from "./useStore";
 
@@ -12,13 +12,27 @@ const useTaskFunctions = () => {
             await createTaskBacklogController(newTask);
             setTarea([...backlog, newTask])
         } catch (error) {
-            console.log('Error al crear la tarea en BacklogScreen', error);
+            console.log('Error al crear la tarea en createTask', error);
+        }
+    }
+
+    // Funcion para editar tarea
+    const editTask = async(updatedTask: ITarea)=>{
+        try {
+            await updateBacklogController(updatedTask);
+            setTarea(backlog.map(
+                (task) => (task.id === updatedTask.id 
+                    ? { ...task, ...updatedTask } 
+                    : task)
+                ));
+        } catch (error) {
+            console.log('Error al editar la tarea en editTask', error);
         }
     }
 
     return (
         {
-            createTask
+            createTask, editTask
         }
     )
 }

@@ -37,7 +37,7 @@ export const BacklogMain = () => {
                                     </select>
                                     <div className={styles.task_actions_btn}>
                                         <button className={styles.btn_view} onClick={()=>{setTaskModal({...taskModal, viewTaskModal: true}); setTask(tarea)}}><FaEye /></button>
-                                        <button className={styles.btn_edit}><FaEdit /></button>
+                                        <button className={styles.btn_edit} onClick={()=>{setTaskModal({...taskModal, editTaskModal: true}); setTask(tarea)}}><FaEdit /></button>
                                         <button className={styles.btn_delete}><FaTrash /></button>
                                     </div>
                                 </div>
