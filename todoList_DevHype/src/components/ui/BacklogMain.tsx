@@ -1,15 +1,13 @@
 import styles from '../screens/BacklogScreen.module.css'
 import useModalState from '../../hooks/useModalState';
 import useStore from '../../hooks/useStore';
-import useTaskFunctions from '../../hooks/useTaskFunctions';
-import CreateTask from '../screens/tasks/CreateTask';
 import { FaEye, FaEdit, FaTrash, FaPlus, FaArrowRight } from "react-icons/fa";
+import TaskModal from './TaskModal';
 
 export const BacklogMain = () => {
 
     const {backlog, sprints} = useStore();
-    const {taskModal, setTaskModal} = useModalState();
-    const {createTask} = useTaskFunctions();
+    const {taskModal, setTaskModal, task, setTask} = useModalState();
 
     return (
         <>
@@ -20,7 +18,7 @@ export const BacklogMain = () => {
                         <div>
                             <h2>Tareas en el backlog</h2>
                             <button className={styles.btn_add_task} onClick={()=>{setTaskModal({...taskModal, createTaskModal: true})}}><FaPlus /> Crear tarea</button>
-                            {taskModal.createTaskModal && <CreateTask createTask={createTask} setModal={setTaskModal}/>}
+                            <TaskModal activeModal= {taskModal} setTaskModal={setTaskModal} tarea={task}></TaskModal>
                         </div>
                     </div>
                     <div className={styles.task_list}>
@@ -38,7 +36,7 @@ export const BacklogMain = () => {
                                         ))}
                                     </select>
                                     <div className={styles.task_actions_btn}>
-                                        <button className={styles.btn_view}><FaEye /></button>
+                                        <button className={styles.btn_view} onClick={()=>{setTaskModal({...taskModal, viewTaskModal: true}); setTask(tarea)}}><FaEye /></button>
                                         <button className={styles.btn_edit}><FaEdit /></button>
                                         <button className={styles.btn_delete}><FaTrash /></button>
                                     </div>

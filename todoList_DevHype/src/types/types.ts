@@ -29,3 +29,19 @@ export interface CreateTaskProps {
     createTask: (newTask: ITarea) => Promise<void>;
     setModal: (modalState: Record<string, boolean>) => void; // Record: Mejor opcion para tipar un objeto
 }
+
+export interface ViewTaskProps {
+    task: ITarea;
+    setModal: (modalState: Record<string, boolean>) => void;
+}
+
+export interface EditTaskProps{
+    editTask: (newTask: ITarea) => Promise<void>;
+    setModal: (modalState: Record<string, boolean>) => void;
+}
+
+export interface TaskModalProps{
+    activeModal: Record<string, boolean>;
+    setTaskModal: (modalState: Record<string, boolean>) => void;
+    tarea?: ITarea;
+}
