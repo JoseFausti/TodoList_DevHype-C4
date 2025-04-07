@@ -24,7 +24,7 @@ export const BacklogMain = () => {
                     <div className={styles.task_list}>
                         {backlog.map((tarea) => (
                             <div className={styles.task_card} key={tarea.id}>
-                                <div>
+                                <div className={styles.task_content}>
                                     <p><b>{tarea.titulo}</b>: {tarea.descripcion}</p>
                                 </div>
                                 <div className={styles.task_actions}>

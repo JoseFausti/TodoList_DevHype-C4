@@ -2,6 +2,9 @@ import styles from '../screens/SprintScreen.module.css'
 import { useParams } from 'react-router-dom';
 import useStore from '../../hooks/useStore';
 import { FaEdit, FaEye, FaTrash } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBox, faArrowRightLong } from '@fortawesome/free-solid-svg-icons'
+
 
 const Backlog = () => {
 
@@ -37,10 +40,10 @@ const Backlog = () => {
                             </div>
                             <div className={styles.task_actions}>
                                 <div className={styles.task_actions_backlog}>
-                                    <button onClick={()=>{}}>Enviar al Backlog</button>
+                                    <button onClick={()=>{}}>Enviar al Backlog<FontAwesomeIcon icon={faBox} style={{ marginLeft: "6px" }} /></button>
                                 </div>
                                 <div className={styles.switch_state}>
-                                    <button onClick={()=>{}}>Pendiente</button>
+                                    <button onClick={()=>{}}>En Progreso<FontAwesomeIcon icon={faArrowRightLong} style={{ marginLeft: "6px" }} /></button>
                                 </div>
                                 <div className={styles.task_actions_btn}>
                                     <button className={styles.btn_view}><FaEye /></button>

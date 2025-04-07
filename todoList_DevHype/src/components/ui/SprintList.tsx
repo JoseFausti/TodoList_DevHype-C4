@@ -19,9 +19,11 @@ export const SprintList = () => {
                     </div>
                     {sprints.map((sprint) => (
                         <div className={styles.sprint_card} key={sprint.id}>
-                            <h3>{sprint.nombre}</h3>
-                            <p><b>Cierre:</b> {sprint.fechaCierre}</p>
-                            <p><b>Inicio:</b> {sprint.fechaInicio}</p>
+                            <div className={styles.sprint_cardText}>
+                                <h3>{sprint.nombre}</h3>
+                                <p>Cierre: {sprint.fechaCierre}</p>
+                                <p>Inicio: {sprint.fechaInicio}</p>
+                            </div>
                             <div className={styles.sprint_actions}>
                                 <Link to={`/sprint/${sprint.id}`} onClick={()=>{setSprintActivo(sprint)}}><button className={styles.btn_view}><FaEye /></button></Link>
                                 <button className={styles.btn_edit} onClick={()=>{setSprintActivo(sprint)}}><FaEdit /></button>
