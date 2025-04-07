@@ -1,5 +1,3 @@
-import { EffectCallback } from "react";
-
 // Interfaces
 export interface ITarea {
     id: string;
@@ -25,7 +23,24 @@ export interface ISprintList {
     sprints: ISprint[]
 }
 
+
+// FC Props
 export interface CreateTaskProps {
-    createTask: (newTask: ITarea) => Promise<void>;
     setModal: (modalState: Record<string, boolean>) => void; // Record: Mejor opcion para tipar un objeto
+}
+
+export interface ViewTaskProps {
+    task: ITarea;
+    setModal: (modalState: Record<string, boolean>) => void;
+}
+
+export interface EditTaskProps{
+    task: ITarea;
+    setModal: (modalState: Record<string, boolean>) => void;
+}
+
+export interface TaskModalProps{
+    activeModal: Record<string, boolean>;
+    setTaskModal: (modalState: Record<string, boolean>) => void;
+    tarea?: ITarea;
 }

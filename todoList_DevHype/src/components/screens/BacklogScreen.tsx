@@ -26,6 +26,7 @@ const BacklogScreen = () => {
                 console.log('Ocurrio un error al cargar los datos en BacklogScreen: ', error);
             }
         })();        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     return (

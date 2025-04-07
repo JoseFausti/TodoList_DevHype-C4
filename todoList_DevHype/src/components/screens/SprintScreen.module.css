@@ -19,7 +19,7 @@
 .backlog_btn{
     margin: .8rem 0;
     padding: .8rem 6rem;
-    background-color: #000AC0;
+    background-color:#000AC0;
     width: 100%;
 }
 
@@ -33,7 +33,7 @@
     text-align: center;
     background-color: #f4f4f4;
     border-radius: .4rem;
-    border: 2px solid #DDDDDD;
+    border: 5px solid #373737;
 }
 
 .sprint_list_header{
@@ -55,7 +55,7 @@
 
 .sprint_list_header button{
     margin: .2rem;
-    background-color: #000dff;
+    background-color: #000AC0;
 }
 
 .sprint_card{
@@ -121,7 +121,7 @@
 
 .task_header_actions button{
     align-self: center;
-    background-color: #000dff;
+    background-color: #000AC0;
 }
 
 .task_sections {
@@ -160,20 +160,18 @@
     background-color: #00e02530;
 }
 
-.task_card_pending, .task_card_in_progress, .task_card_completed{
-    min-width: 300px;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    box-shadow: 1px 1px 2px black;
-    border-radius: .25rem;
-    padding: .4rem;
-    gap: .8rem;
+.task_card_pending, .task_card_in_progress, .task_card_completed {
+    min-width: 350px;    
+    max-width: 400px;
+    width: 95%;
+    padding: .2rem;    
+    gap: .4rem;          
+    box-shadow: 3px 3px 8px #00000070;
+    border-radius: 0.5rem;
 }
 
 .task_card_pending{
-    background-color: #000ac050;
+    background-color: #ffffff;
 }
 
 .task_card_in_progress{
@@ -202,31 +200,35 @@
     font-weight: 700;
 }
 
-.task_actions{
-    width: 100%;
+.task_actions {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap; 
     justify-content: space-between;
-    gap: .2rem;
+    gap: .1rem;
+    width: 100%;
 }
 
 .task_actions div{
-    padding: .2rem;
+    padding: .1rem;
     font-size: .8rem;
 }
 
-.task_actions_btn{
-    display: flex;
-    gap: .2rem;
+.task_actions_btn button,
+.task_actions_backlog button,
+.switch_state button {
+    font-size: 0.80rem;
+    padding: 0.4rem 0.4rem;
+    flex: 1;
+    max-width: 200px; 
+    margin: 1px;
+    white-space: nowrap;
 }
 
-.task_actions_btn button{
-    padding: .4rem .6rem;
-}
+
 
 /* Buttons */
 .task_actions_backlog button{
-    background-color: #00b403;
+    background-color: #308332;
 }
 
 .switch_state button{
@@ -234,7 +236,7 @@
 }
 
 .btn_view{
-    background-color: #000000;
+    background-color: #000AC0;
 }
 
 .btn_edit{

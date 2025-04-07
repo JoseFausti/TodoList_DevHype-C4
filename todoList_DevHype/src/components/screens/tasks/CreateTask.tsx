@@ -2,8 +2,11 @@ import styles from './CreateTask.module.css'
 import { CreateTaskProps, ITarea } from '../../../types/types'
 import {hash} from 'sha-256';
 import Swal from 'sweetalert2';
+import useTaskFunctions from '../../../hooks/useTaskFunctions';
 
-const CreateTask: React.FC<CreateTaskProps> = ({ createTask, setModal }) => {
+const CreateTask: React.FC<CreateTaskProps> = ({ setModal }) => {
+
+  const {createTask} = useTaskFunctions();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
