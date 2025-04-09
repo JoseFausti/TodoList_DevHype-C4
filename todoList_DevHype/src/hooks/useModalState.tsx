@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { ITarea } from '../types/types';
 
 const useModalState = () => {
 
@@ -11,12 +10,9 @@ const useModalState = () => {
         }
     )
 
-    const [task, setTask] = useState<ITarea | undefined>(undefined);
-
     return (
         {
             taskModal, setTaskModal,
-            task, setTask
         }
     )
 }

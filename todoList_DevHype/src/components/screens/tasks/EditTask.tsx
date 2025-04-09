@@ -2,10 +2,12 @@ import styles from "./EditTask.module.css"
 import { EditTaskProps, ITarea } from "../../../types/types"
 import useTaskFunctions from "../../../hooks/useTaskFunctions";
 import Swal from "sweetalert2";
+import useStore from "../../../hooks/useStore";
 
-const EditTask: React.FC<EditTaskProps> = ({task, setModal}) => {
+const EditTask: React.FC<EditTaskProps> = ({setModal}) => {
 
     const {editTask} = useTaskFunctions();
+    const {tareaActiva, setTareaActiva} = useStore(); 
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
@@ -13,10 +15,10 @@ const EditTask: React.FC<EditTaskProps> = ({task, setModal}) => {
         const task_ = Object.fromEntries(new FormData(e.currentTarget).entries());
     
         const newTask: ITarea = {
-            id: task.id as string,
+            id: tareaActiva!.id as string,
             titulo: task_.title as string,
             descripcion: task_.description as string,
-            estado: task.estado as string,
+            estado: tareaActiva!.estado as string,
             fechaLimite: task_.date as string
           };
     
@@ -43,15 +45,15 @@ const EditTask: React.FC<EditTaskProps> = ({task, setModal}) => {
             <form onSubmit={(e) => {handleSubmit(e)}} className={styles.editTask_form}>
                 <div>
                     <label htmlFor="title">Título</label>
-                    <input onChange={(e) => {task.titulo = e.target.value}} type="text" name="title" placeholder="Título de la tarea" value={task.titulo} required/>
+                    <input onChange={(e) => {setTareaActiva({...tareaActiva!, titulo: e.target.value})}} type="text" name="title" placeholder="Título de la tarea" value={tareaActiva?.titulo} required/>
                 </div>
                 <div>
                     <label htmlFor="description">Descripción</label>
-                    <input onChange={(e) => {task.descripcion = e.target.value}} type="text" name="description" placeholder="Descripción de la tarea" value={task.descripcion} required/>
+                    <input onChange={(e) => {setTareaActiva({...tareaActiva!, descripcion: e.target.value})}} type="text" name="description" placeholder="Descripción de la tarea" value={tareaActiva?.descripcion} required/>
                 </div>
                 <div>
                     <label htmlFor="date">Fecha límite</label>
-                    <input onChange={(e) => {task.fechaLimite = e.target.value}} type="date" name="date" value={task.fechaLimite} required></input>
+                    <input onChange={(e) => {setTareaActiva({...tareaActiva!, fechaLimite: e.target.value})}} type="date" name="date" value={tareaActiva?.fechaLimite} required></input>
                 </div>
                 <div>
                     <button type="submit">Editar</button>
