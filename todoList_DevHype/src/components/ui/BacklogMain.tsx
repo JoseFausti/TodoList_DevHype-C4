@@ -7,8 +7,8 @@ import useTaskFunctions from '../../hooks/useTaskFunctions';
 
 export const BacklogMain = () => {
 
-    const {backlog, sprints} = useStore();
-    const {taskModal, setTaskModal, task, setTask} = useModalState();
+    const {backlog, sprints, tareaActiva, setTareaActiva} = useStore();
+    const {taskModal, setTaskModal } = useModalState();
     const {deleteTask} = useTaskFunctions();
 
     return (
@@ -20,7 +20,7 @@ export const BacklogMain = () => {
                         <div>
                             <h2>Tareas en el backlog</h2>
                             <button className={styles.btn_add_task} onClick={()=>{setTaskModal({...taskModal, createTaskModal: true})}}><FaPlus /> Crear tarea</button>
-                            <TaskModal activeModal= {taskModal} setTaskModal={setTaskModal} tarea={task}></TaskModal>
+                            <TaskModal activeModal= {taskModal} setTaskModal={setTaskModal} tarea={tareaActiva!}></TaskModal>
                         </div>
                     </div>
                     <div className={styles.task_list}>
@@ -38,8 +38,8 @@ export const BacklogMain = () => {
                                         ))}
                                     </select>
                                     <div className={styles.task_actions_btn}>
-                                        <button className={styles.btn_view} onClick={()=>{setTaskModal({...taskModal, viewTaskModal: true}); setTask(tarea)}}><FaEye /></button>
-                                        <button className={styles.btn_edit} onClick={()=>{setTaskModal({...taskModal, editTaskModal: true}); setTask(tarea)}}><FaEdit /></button>
+                                        <button className={styles.btn_view} onClick={()=>{setTaskModal({...taskModal, viewTaskModal: true}); setTareaActiva(tarea)}}><FaEye /></button>
+                                        <button className={styles.btn_edit} onClick={()=>{setTaskModal({...taskModal, editTaskModal: true}); setTareaActiva(tarea)}}><FaEdit /></button>
                                         <button className={styles.btn_delete} onClick={()=>{deleteTask(tarea.id)}}><FaTrash /></button>
                                     </div>
                                 </div>
