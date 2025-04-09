@@ -3,11 +3,13 @@ import useModalState from '../../hooks/useModalState';
 import useStore from '../../hooks/useStore';
 import { FaEye, FaEdit, FaTrash, FaPlus, FaArrowRight } from "react-icons/fa";
 import TaskModal from './TaskModal';
+import useTaskFunctions from '../../hooks/useTaskFunctions';
 
 export const BacklogMain = () => {
 
     const {backlog, sprints} = useStore();
     const {taskModal, setTaskModal, task, setTask} = useModalState();
+    const {deleteTask} = useTaskFunctions();
 
     return (
         <>
@@ -38,7 +40,7 @@ export const BacklogMain = () => {
                                     <div className={styles.task_actions_btn}>
                                         <button className={styles.btn_view} onClick={()=>{setTaskModal({...taskModal, viewTaskModal: true}); setTask(tarea)}}><FaEye /></button>
                                         <button className={styles.btn_edit} onClick={()=>{setTaskModal({...taskModal, editTaskModal: true}); setTask(tarea)}}><FaEdit /></button>
-                                        <button className={styles.btn_delete}><FaTrash /></button>
+                                        <button className={styles.btn_delete} onClick={()=>{deleteTask(tarea.id)}}><FaTrash /></button>
                                     </div>
                                 </div>
                             </div>
