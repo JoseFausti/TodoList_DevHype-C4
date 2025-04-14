@@ -121,7 +121,6 @@
 
 .task_header_actions button{
     align-self: center;
-    background-color: #000AC0;
 }
 
 .task_sections {
@@ -229,6 +228,10 @@
 /* Buttons */
 .task_actions_backlog button{
     background-color: #308332;
+}
+
+.btn_add_task{
+    background-color: #000AC0;
 }
 
 .switch_state button{

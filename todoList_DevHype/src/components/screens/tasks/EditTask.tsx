@@ -1,10 +1,10 @@
 import styles from "./EditTask.module.css"
-import { EditTaskProps, ITarea } from "../../../types/types"
-import useTaskFunctions from "../../../hooks/useTaskFunctions";
+import { TaskSprintProps, ITarea, TaskState } from "../../../types/types"
+import useTaskFunctions from "../../../hooks/useTaskAndSprintFunctions";
 import Swal from "sweetalert2";
 import useStore from "../../../hooks/useStore";
 
-const EditTask: React.FC<EditTaskProps> = ({setModal}) => {
+const EditTask: React.FC<TaskSprintProps> = ({setModal}) => {
 
     const {editTask} = useTaskFunctions();
     const {tareaActiva, setTareaActiva} = useStore(); 
@@ -18,7 +18,7 @@ const EditTask: React.FC<EditTaskProps> = ({setModal}) => {
             id: tareaActiva!.id as string,
             titulo: task_.title as string,
             descripcion: task_.description as string,
-            estado: tareaActiva!.estado as string,
+            estado: tareaActiva!.estado as TaskState,
             fechaLimite: task_.date as string
           };
     

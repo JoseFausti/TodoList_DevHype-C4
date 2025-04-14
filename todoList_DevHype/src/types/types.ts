@@ -1,9 +1,16 @@
+// Enumeraciones
+export enum TaskState {
+    PENDIENTE = "pendiente",
+    EN_PROGRESO = "en progreso",
+    COMPLETADO = "completado",
+}
+
 // Interfaces
 export interface ITarea {
     id: string;
     titulo: string;
     descripcion: string;
-    estado: string;
+    estado: TaskState;
     fechaLimite: string;
 }
 
@@ -25,22 +32,11 @@ export interface ISprintList {
 
 
 // FC Props
-export interface CreateTaskProps {
-    setModal: (modalState: Record<string, boolean>) => void; // Record: Mejor opcion para tipar un objeto
-}
-
-export interface ViewTaskProps {
-    task: ITarea;
-    setModal: (modalState: Record<string, boolean>) => void;
-}
-
-export interface EditTaskProps{
-    task: ITarea;
-    setModal: (modalState: Record<string, boolean>) => void;
-}
-
-export interface TaskModalProps{
+export interface TaskSprintModalProps{
     activeModal: Record<string, boolean>;
-    setTaskModal: (modalState: Record<string, boolean>) => void;
-    tarea?: ITarea;
+    setActiveModal: (modalState: Record<string, boolean>) => void;
+}
+
+export interface TaskSprintProps{
+    setModal: (modalState: Record<string, boolean>) => void;
 }

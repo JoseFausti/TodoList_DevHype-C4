@@ -2,14 +2,14 @@ import styles from '../screens/BacklogScreen.module.css'
 import useModalState from '../../hooks/useModalState';
 import useStore from '../../hooks/useStore';
 import { FaEye, FaEdit, FaTrash, FaPlus, FaArrowRight } from "react-icons/fa";
-import TaskModal from './TaskModal';
-import useTaskFunctions from '../../hooks/useTaskFunctions';
+import useTaskAndSprintFunctions from '../../hooks/useTaskAndSprintFunctions';
+import { TaskSprintModal } from './TaskSprintModal';
 
 export const BacklogMain = () => {
 
-    const {backlog, sprints, tareaActiva, setTareaActiva} = useStore();
+    const {backlog, sprints, setTareaActiva} = useStore();
     const {taskModal, setTaskModal } = useModalState();
-    const {deleteTask} = useTaskFunctions();
+    const {deleteTask} = useTaskAndSprintFunctions();
 
     return (
         <>
@@ -20,7 +20,7 @@ export const BacklogMain = () => {
                         <div>
                             <h2>Tareas en el backlog</h2>
                             <button className={styles.btn_add_task} onClick={()=>{setTaskModal({...taskModal, createTaskModal: true})}}><FaPlus /> Crear tarea</button>
-                            <TaskModal activeModal= {taskModal} setTaskModal={setTaskModal} tarea={tareaActiva!}></TaskModal>
+                            <TaskSprintModal activeModal= {taskModal} setActiveModal={setTaskModal}></TaskSprintModal>
                         </div>
                     </div>
                     <div className={styles.task_list}>
