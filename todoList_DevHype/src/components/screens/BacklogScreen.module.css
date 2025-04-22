@@ -235,6 +235,10 @@
 }
 
 /* Buttons */
+.btn_move{
+    background-color: #202020;
+}
+
 .btn_add_task{
     background-color: #000AC0;
 }

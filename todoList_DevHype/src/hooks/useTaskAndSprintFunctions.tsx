@@ -57,6 +57,16 @@ const useTaskAndSprintFunctions = () => {
             console.log('Error al eliminar la tarea en deleteTask', error);
         }
     };
+
+    const moveTaskToSprint = async(taskId: string, sprintId: string)=>{
+        try {
+            await deleteTaskBacklogController(taskId);
+            setTarea(backlog.filter((task) => task.id !== taskId));
+            await addTaskToSprint(sprintId, backlog.filter((task) => task.id === taskId)[0]);
+        } catch (error) {
+            console.log('Error al eliminar la tarea en deleteTask', error);
+        }
+    }
     
     // Funciones del Sprint
 
@@ -172,7 +182,7 @@ const useTaskAndSprintFunctions = () => {
     return (
         {
             // Funciones del Backlog
-            createTask, editTask, deleteTask,
+            createTask, editTask, deleteTask, moveTaskToSprint,
             // Funciones del Sprint
             createSprint, editSprint, deleteSprint,
             // Funciones de la tarea de la Sprint

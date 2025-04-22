@@ -4,12 +4,36 @@ import useStore from '../../hooks/useStore';
 import { FaEye, FaEdit, FaTrash, FaPlus, FaArrowRight } from "react-icons/fa";
 import useTaskAndSprintFunctions from '../../hooks/useTaskAndSprintFunctions';
 import { TaskSprintModal } from './TaskSprintModal';
+import { useState } from 'react';
+import Swal from 'sweetalert2';
+import { ISprint } from '../../types/types';
 
 export const BacklogMain = () => {
 
-    const {backlog, sprints, setTareaActiva} = useStore();
+    const {backlog, sprints, sprintActivo, setSprintActivo, tareaActiva, setTareaActiva} = useStore();
     const {taskModal, setTaskModal } = useModalState();
-    const {deleteTask} = useTaskAndSprintFunctions();
+    const {deleteTask, moveTaskToSprint} = useTaskAndSprintFunctions();
+
+    const [sprintSelected, setSprintSelected] = useState<ISprint | null>(null);
+
+    const handleMoveToSprint = async () => {
+        try {
+            if (!sprintSelected) {
+                throw new Error('No se ha seleccionado un sprint');
+            }
+            await moveTaskToSprint(tareaActiva!.id, sprintActivo!.id);
+            setSprintSelected(null); // reset
+        } catch (error) {
+            console.log('Error al enviar la tarea al sprint en handleMoveToSprint', error);
+        }
+        Swal.fire({
+            icon: 'success',
+            title: 'Tarea enviada con éxito',
+            text: 'La tarea se ha enviado al sprint correctamente',
+            showConfirmButton: false,
+            timer: 2000,
+        });
+    };
 
     return (
         <>
@@ -30,11 +54,11 @@ export const BacklogMain = () => {
                                     <p><b>{tarea.titulo}</b>: {tarea.descripcion}</p>
                                 </div>
                                 <div className={styles.task_actions}>
-                                    <button className={styles.btn_move}><FaArrowRight /> Enviar a</button>
+                                    <button className={styles.btn_move} onClick={sprintSelected ? handleMoveToSprint : undefined}><FaArrowRight /> Enviar a</button>
                                     <select className={styles.sprint_select}>
                                         <option>Seleccione una sprint</option>
                                         {sprints.map(sprint => (
-                                            <option key={sprint.id} value={sprint.id}>{sprint.nombre}</option>
+                                            <option key={sprint.id} value={sprint.id} onClick={()=>{setSprintActivo(sprint); setTareaActiva(tarea); setSprintSelected(sprint);}}>{sprint.nombre}</option>
                                         ))}
                                     </select>
                                     <div className={styles.task_actions_btn}>
