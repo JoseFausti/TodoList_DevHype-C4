@@ -55,10 +55,29 @@ export const BacklogMain = () => {
                                 </div>
                                 <div className={styles.task_actions}>
                                     <button className={styles.btn_move} onClick={sprintSelected ? handleMoveToSprint : undefined}><FaArrowRight /> Enviar a</button>
-                                    <select className={styles.sprint_select}>
+                                    {/* <select className={styles.sprint_select}>
                                         <option>Seleccione una sprint</option>
                                         {sprints.map(sprint => (
                                             <option key={sprint.id} value={sprint.id} onClick={()=>{setSprintActivo(sprint); setTareaActiva(tarea); setSprintSelected(sprint);}}>{sprint.nombre}</option>
+                                        ))}
+                                    </select> */}
+                                    <select
+                                        className={styles.sprint_select}
+                                        onChange={(e) => {
+                                            const selectedId = e.target.value;
+                                            const sprint = sprints.find(s => s.id === selectedId);
+                                            if (sprint) {
+                                                setSprintActivo(sprint);
+                                                setTareaActiva(tarea);
+                                                setSprintSelected(sprint);
+                                            }
+                                        }}
+                                        >
+                                        <option value="">Seleccione una sprint</option>
+                                        {sprints.map(sprint => (
+                                            <option key={sprint.id} value={sprint.id}>
+                                            {sprint.nombre}
+                                            </option>
                                         ))}
                                     </select>
                                     <div className={styles.task_actions_btn}>

@@ -7,27 +7,6 @@
         "descripcion": "Descripcion tarea backlog",
         "estado": "pendiente",
         "fechaLimite": "2025-03-05"
-      },
-      {
-        "id": "72b89334f32d26993b1ee10909b384e96be024531c67f742433ec654457308b6",
-        "titulo": "wwwwwwwwqqq",
-        "descripcion": "weeeee",
-        "estado": "en progreso",
-        "fechaLimite": "2025-04-01"
-      },
-      {
-        "id": "04a438a6e70016051dae52f461e6d57283c441d402dc3a31778d3fc00fb85e09",
-        "titulo": "s",
-        "descripcion": "dss",
-        "estado": "pendiente",
-        "fechaLimite": "2025-04-30"
-      },
-      {
-        "id": "de047711dfd3060c632b6233c2f7a97734c5de6c2a01e1e7e5778df2417b51d6",
-        "titulo": "Holas",
-        "descripcion": "holasssscccc",
-        "estado": "pendiente",
-        "fechaLimite": "2025-05-05"
       }
     ]
   },
@@ -45,21 +24,6 @@
             "descripcion": "Descripcion tarea backlog",
             "estado": "pendiente",
             "fechaLimite": "2025-03-05"
-          }
-        ]
-      },
-      {
-        "id": "c20d99b994c45498dcf6c8e660822ac6ce310d0f003150737176f3e998b2333f",
-        "nombre": "esos",
-        "fechaInicio": "2025-04-25",
-        "fechaCierre": "2025-04-27",
-        "tareas": [
-          {
-            "id": "121ac4cf10e3b59ee2abe66ce4a9dade17b874a750d0f79d4c82751209f0d3a3",
-            "titulo": "dd",
-            "descripcion": "df",
-            "estado": "pendiente",
-            "fechaLimite": "2025-04-24"
           }
         ]
       }
