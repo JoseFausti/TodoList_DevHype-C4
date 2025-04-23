@@ -82,6 +82,15 @@
     100% { background-color: #000AC0; }
 }
 
+.error{
+    margin: .2rem 0;
+    width: 100%;
+    text-align: center;
+    color: red;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
 /* Buttons */
 .btn_close{
     position: absolute;

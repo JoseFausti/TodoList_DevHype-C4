@@ -3,10 +3,13 @@ import { TaskSprintProps, ITarea, TaskState } from '../../../types/types'
 import {hash} from 'sha-256';
 import Swal from 'sweetalert2';
 import useTaskFunctions from '../../../hooks/useTaskAndSprintFunctions';
+import { taskSchema } from '../../../types/schemas';
+import { useState } from 'react';
 
 const CreateTask: React.FC<TaskSprintProps> = ({ setModal }) => {
 
-  const {createTask} = useTaskFunctions();
+  const {createTask, validate} = useTaskFunctions();
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
@@ -15,12 +18,22 @@ const CreateTask: React.FC<TaskSprintProps> = ({ setModal }) => {
     // fromEntries() → Convierte un array de pares [clave, valor] en un objeto
     const task = Object.fromEntries(new FormData(e.currentTarget).entries()); // FormData es un objeto especial por lo que usamos entries().
 
+    const result = validate(taskSchema, task);
+
+    if (!result.success) {
+      setErrors(result.fieldErrors);
+      setTimeout(()=>{
+        setErrors({});
+      }, 3000)
+      return;
+    };
+
     const newTask: ITarea = {
         id: hash(new Date().toISOString().toString()) as string,
-        titulo: task.title as string,
-        descripcion: task.description as string,
+        titulo: result.data.title as string,
+        descripcion: result.data.description as string,
         estado: TaskState.PENDIENTE,
-        fechaLimite: task.date as string
+        fechaLimite: result.data.finalDate as string
       };
 
       try {
@@ -46,15 +59,18 @@ const CreateTask: React.FC<TaskSprintProps> = ({ setModal }) => {
             <form onSubmit={(e) => {handleSubmit(e)}} className={styles.createTask_form}>
                 <div>
                   <label htmlFor="title">Título</label>
-                  <input type="text" name="title" placeholder="Título de la tarea" required/>
+                  <input type="text" name="title" placeholder="Título de la tarea"/>
+                  {errors.title && <p className={styles.error}>{errors.title}</p>}
                 </div>
                 <div>
                   <label htmlFor="description">Descripción</label>
-                  <input type="text" name="description" placeholder="Descripción de la tarea" required/>
+                  <input type="text" name="description" placeholder="Descripción de la tarea"/>
+                  {errors.description && <p className={styles.error}>{errors.description}</p>}
                 </div>
                 <div>
-                  <label htmlFor="date">Fecha límite</label>
-                  <input type="date" name="date" required></input>
+                  <label htmlFor="finalDate">Fecha límite</label>
+                  <input type="date" name="finalDate"></input>
+                  {errors.finalDate && <p className={styles.error}>{errors.finalDate}</p>}
                 </div>
                 <div>
                   <button type="submit">Crear</button>

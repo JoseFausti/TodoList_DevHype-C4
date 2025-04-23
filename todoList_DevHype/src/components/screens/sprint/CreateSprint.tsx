@@ -3,21 +3,35 @@ import { hash } from 'sha-256';
 import useTaskAndSprintFunctions from '../../../hooks/useTaskAndSprintFunctions';
 import { ISprint, TaskSprintProps } from '../../../types/types';
 import Swal from 'sweetalert2';
+import { sprintSchema } from '../../../types/schemas';
+import { useState } from 'react';
 
 const CreateSprint: React.FC<TaskSprintProps> = ({setModal}) => {
 
-    const {createSprint} = useTaskAndSprintFunctions();
-  
+    const {createSprint, validate} = useTaskAndSprintFunctions();
+    const [errors, setErrors] = useState <Record<string, string>>({});
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
     
         const sprint = Object.fromEntries(new FormData(e.currentTarget).entries());
+       
+        // zod validation
+        const result = validate(sprintSchema, sprint);
     
+        if (!result.success) {
+          setErrors(result.fieldErrors);
+          setTimeout(()=>{
+            setErrors({});
+          }, 3000)
+          return;
+        };
+
         const newSprint: ISprint = {
             id: hash(new Date().toISOString().toString()) as string,
-            nombre: sprint.name as string,
-            fechaInicio: sprint.initialDate as string,
-            fechaCierre: sprint.finalDate as string,
+            nombre: result.data.name as string,
+            fechaInicio: result.data.initialDate as string,
+            fechaCierre: result.data.finalDate as string,
             tareas: []
         };
   
@@ -44,15 +58,18 @@ const CreateSprint: React.FC<TaskSprintProps> = ({setModal}) => {
               <form onSubmit={(e) => {handleSubmit(e)}} className={styles.createSprint_form}>
                   <div>
                     <label htmlFor="name">Título</label>
-                    <input type="text" name="name" placeholder="Nombre del sprint" required/>
+                    <input type="text" name="name" placeholder="Nombre del sprint"/>
+                    {errors.name && <p className={styles.error}>{errors.name}</p>}
                   </div>
                   <div>
                     <label htmlFor="initialDate">Fecha inicio</label>
-                    <input type="date" name="initialDate" required/>
+                    <input type="date" name="initialDate"/>
+                    {errors.initialDate && <p className={styles.error}>{errors.initialDate}</p>}
                   </div>
                   <div>
                     <label htmlFor="finalDate">Fecha cierre</label>
-                    <input type="date" name="finalDate" required></input>
+                    <input type="date" name="finalDate"></input>
+                    {errors.finalDate && <p className={styles.error}>{errors.finalDate}</p>}
                   </div>
                   <div>
                     <button type="submit">Crear</button>

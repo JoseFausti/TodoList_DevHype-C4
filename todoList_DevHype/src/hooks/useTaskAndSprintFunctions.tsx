@@ -8,6 +8,24 @@ const useTaskAndSprintFunctions = () => {
 
     const {backlog, setTarea, sprints, setSprint} = useStore();
 
+    // Validacion zod:  (La ',' despues del tipo generico es porque sino lo toma como elemento TSX)
+    const validate = <T,>(schema: Zod.Schema<T>, data: unknown): { success: true; data: T } | { success: false; fieldErrors: Record<string, string> } => {
+       
+        const result = schema.safeParse(data);
+
+        if (result.success) {
+            return { success: true, data: result.data };
+        }
+
+        const fieldErrors: Record<string, string> = {};
+        result.error.errors.forEach((err) => {
+            const path = err.path.join('.');
+            fieldErrors[path] = err.message;
+        });
+
+        return { success: false, fieldErrors };
+    };
+
     // Funciones del Backlog
 
     // Funcion crear tarea
@@ -181,6 +199,8 @@ const useTaskAndSprintFunctions = () => {
 
     return (
         {
+            // Validacion Formulario
+            validate,
             // Funciones del Backlog
             createTask, editTask, deleteTask, moveTaskToSprint,
             // Funciones del Sprint
