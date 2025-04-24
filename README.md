@@ -24,18 +24,23 @@ Aplicación web de gestión de tareas desarrollada con React, TypeScript y Vite.
 📦 Instalación
 
 1. Clona este repositorio:
+   ```
    _ git clone https://github.com/JoseFausti/TodoList_DevHype-C4.git
    _ cd TodoList_DevHype-C4/todoList_DevHype
-
-3. Instala las dependencias:
+   ```
+2. Instala las dependencias:
+   ```
    npm install
-
-4. Ejecuta la app en modo desarrollo:
+   ```
+3. Ejecuta la app en modo desarrollo:
+   ```
    npm run dev
+   ```
 
-5. Levanta el backend simulado con `json-server`:
+4. Levanta el backend simulado con `json-server`:
+   ```
    npm run db
-
+   ```
 📁 Estructura del Proyecto
 ```
 todoList_DevHype/
