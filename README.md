@@ -37,7 +37,7 @@ Aplicación web de gestión de tareas desarrollada con React, TypeScript y Vite.
    npm run db
 
 📁 Estructura del Proyecto
-
+```
 todoList_DevHype/
 ├── node_modules/            # Dependencias del proyecto (generado con npm install)
 ├── public/                  # Archivos públicos como imágenes
@@ -57,6 +57,7 @@ todoList_DevHype/
 ├── package.json             # Configuración de dependencias y scripts
 ├── vite.config.ts           # Configuración de Vite
 
+```
 👨‍💻 Autor
 
 Desarrollado por José Fausti y Joaquín Riveros - DevHype
