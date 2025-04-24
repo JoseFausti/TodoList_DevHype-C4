@@ -18,6 +18,18 @@ const Backlog = () => {
 
     if (!sprint) return <p className={styles.error}>Sprint no encontrado</p>;
 
+    const obtenerClasePorFecha = (fechaLimite: string) => {
+        const fechaActual = new Date();
+        const fechaTarea = new Date(fechaLimite);
+        fechaTarea.setHours(0, 0, 0, 0);
+      
+        const diferencia_milisegundos = fechaTarea.getTime() - fechaActual.getTime();
+        const diasRestantes = Math.ceil(diferencia_milisegundos / (1000 * 60 * 60 * 24));
+      
+        if (diasRestantes <= 3) return styles.task_card_red; // cerca de vencer
+        return;
+    };
+
     return (
     <>
         <div className={styles.sprint_container}>
@@ -33,7 +45,7 @@ const Backlog = () => {
                 <div className={styles.task_column_pending}>
                     <h3><b>Pendiente</b></h3>
                     {sprint.tareas.filter(t => t.estado === "pendiente").map((tarea) => (
-                        <div key={tarea.id} className={styles.task_card_pending}>
+                        <div key={tarea.id} className={`${styles.task_card_pending} ${obtenerClasePorFecha(tarea.fechaLimite)}`}>
                             <TaskCard 
                                 sprintId={sprint.id}
                                 tarea={tarea}
@@ -47,7 +59,7 @@ const Backlog = () => {
                 <div className={styles.task_column_in_progress}>
                     <h3><b>En Progreso</b></h3>
                     {sprint.tareas.filter(t => t.estado === "en progreso").map((tarea) => (
-                        <div key={tarea.id} className={styles.task_card_in_progress}>
+                        <div key={tarea.id} className={`${styles.task_card_in_progress} ${obtenerClasePorFecha(tarea.fechaLimite)}`}>
                             <TaskCard 
                                 sprintId={sprint.id}
                                 tarea={tarea}

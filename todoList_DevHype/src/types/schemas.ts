@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 // Task
 export const taskSchema = z.object({
-    title: z.string().nonempty("El título es requerido"),
+    title: z.string().min(5, "El titulo debe ser mayor a 4 caracteres"),
     description: z.string().nonempty("Ingrese una descripción"),
     finalDate: z.string().nonempty("La fecha de cierre es requerida")
 })
@@ -11,7 +11,7 @@ export type TaskSchema = z.infer<typeof taskSchema>
 
 // Sprint
 export const sprintSchema = z.object({
-    name: z.string().nonempty("El nombre es requerido"),
+    name: z.string().min(5, "El nombre debe ser mayor a 4 caracteres"),
     initialDate: z.string().nonempty("La fecha de inicio es requerida"),
     finalDate: z.string().nonempty("La fecha de cierre es requerida"),
 }).superRefine((data, ctx) => { // Aquí comenzamos con superRefine

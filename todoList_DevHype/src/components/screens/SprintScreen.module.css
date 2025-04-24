@@ -169,6 +169,10 @@
     border-radius: 0.5rem;
 }
 
+.task_card_red{
+    border: 3px solid #b60000;
+}
+
 .task_card_pending{
     background-color: #ffffff;
 }

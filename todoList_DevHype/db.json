@@ -7,6 +7,13 @@
         "descripcion": "Descripcion tarea backlog",
         "estado": "pendiente",
         "fechaLimite": "2025-03-05"
+      },
+      {
+        "id": "7cacfe041c7b27a80b806a3544281e61c2c3d26c52870f23f147cb80780013b1",
+        "titulo": "sss",
+        "descripcion": "s",
+        "estado": "pendiente",
+        "fechaLimite": "2025-04-25"
       }
     ]
   },
@@ -22,7 +29,7 @@
             "id": "dcec0ad4-31e0-4279-8ccf-72bd1f20b52d",
             "titulo": "Tarea backlog",
             "descripcion": "Descripcion tarea backlog",
-            "estado": "pendiente",
+            "estado": "completado",
             "fechaLimite": "2025-03-05"
           }
         ]
